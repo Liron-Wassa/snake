@@ -22,21 +22,31 @@ export default class Bait{
         area.removeChild(bait);
     }
 
-    drew = () => {
+    checkCollision = () => {
 
-        let area = document.querySelector("#area");
         let y = this.Y_points[Math.floor(Math.random() * this.Y_points.length)];
         let x = this.X_points[Math.floor(Math.random() * this.X_points.length)];
         
         for(let idx = 0; idx < this.snakeBody.length; idx++) {
 
             if(x === this.snakeBody[idx].x && y === this.snakeBody[idx].y){
-                return this.drew(this.snakeBody);
+
+                y = this.Y_points[Math.floor(Math.random() * this.Y_points.length)];
+                x = this.X_points[Math.floor(Math.random() * this.X_points.length)];
+                idx = 0;
             }
         }
 
-        this.y = this.Y_points[Math.floor(Math.random() * this.Y_points.length)];
-        this.x = this.X_points[Math.floor(Math.random() * this.X_points.length)];
+        return {x, y};
+    }
+
+    drew = () => {
+
+        let area = document.querySelector("#area");
+        let position = this.checkCollision();
+        
+        this.y = position.y;
+        this.x = position.x;
 
         let div = document.createElement("div");
         div.setAttribute("id", "bait");
