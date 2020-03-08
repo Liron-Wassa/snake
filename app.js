@@ -17,7 +17,7 @@ let score = 0;
 let game = new Game();
 let snake = new Snake(gameHeight, gameWidth, game);
 let bait = new Bait(gameHeight, gameWidth, snake);
-new Input(snake, restart);
+new Input(snake, restart, gameLoop);
 
 function restart() {
     score = 0;
@@ -31,7 +31,7 @@ function restart() {
 snake.drew();
 bait.drew();
 
-const gameLoop = () => {
+function gameLoop() {
 
     console.log("game running");
     gameOver.style.display = "none";
@@ -39,13 +39,13 @@ const gameLoop = () => {
     resetBtnContainer.style.display = "none";
     resetBtn.style.display = "none";
     
-    let gameId = setInterval(() => {
+    let gameId = setInterval(function() {
                 
         if(game.state === game.running){
             
             snake.move();
 
-            if(bait.x === snake.body[0].x && bait.y === snake.body[0].y){
+                if(bait.x === snake.body[0].x && bait.y === snake.body[0].y){
 
                 score += 10;
                 points.textContent = score;
@@ -69,5 +69,3 @@ const gameLoop = () => {
 
     }, 130);
 }
-
-gameLoop();

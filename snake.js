@@ -7,7 +7,7 @@ export default class Snake{
         this.gameHeight = gameHeight;
         this.gameWidth = gameWidth;
         this.isCrushed = false;
-        this.direction = "";
+        this.direction = "UP";
         this.step = 20;
         this.body = [
             // {x: 0, y: (this.gameHeight - (this.step * 20))},
@@ -33,7 +33,7 @@ export default class Snake{
         ];
     }
 
-    restart = () => {
+    restart() {
 
         this.body = [
             {x: 0, y: (this.gameHeight - (this.step * 5))},
@@ -43,14 +43,14 @@ export default class Snake{
             {x: 0, y: (this.gameHeight - this.step)}
         ];
         
-        this.direction = "";
+        this.direction = "UP";
         this.snakePreviousPosition = [];
         this.isCrushed = false;
         this.remove();
         this.drew();
     }
 
-    remove = () => {
+    remove() {
         let area = document.querySelector("#area");
         let body = document.querySelectorAll(".body");
 
@@ -59,13 +59,13 @@ export default class Snake{
         }
     }
 
-    addBodyPart = () => {
+    addBodyPart() {
         this.body.push({x: this.body[this.body.length - 1].x, y: this.body[this.body.length - 1].y});
         this.remove();
         this.drew();
     }
 
-    drew = () => {
+    drew() {
         let area = document.querySelector("#area");
 
         for (let idx = 0; idx < this.body.length; idx++) {            
@@ -85,13 +85,13 @@ export default class Snake{
         }
     }
     
-    savePreviousPosition = () => {
+    savePreviousPosition() {
         for (let idx = 0; idx < this.body.length - 1; idx++) {
             this.snakePreviousPosition[idx] = this.body[idx];
         }
     }
 
-    updatePosition = () => {
+    updatePosition() {
         let bodyPart = document.querySelectorAll(".body");
 
         for (let idx = 0; idx < this.snakePreviousPosition.length; idx++) {
@@ -102,7 +102,7 @@ export default class Snake{
         }
     }
 
-    collisionDetection = (snakeHead, snakeBody) => {
+    collisionDetection(snakeHead, snakeBody) {
         for (let idx = 0; idx < snakeBody.length; idx++) {
             if((snakeHead.x === snakeBody[idx].x) && (snakeHead.y === snakeBody[idx].y)){                
                 this.game.state = this.game.over;
@@ -118,15 +118,15 @@ export default class Snake{
         }
     }
 
-    move = () => {
-
+    move() {
+        
         const bodyPart = document.querySelector(".body");
         const snakeHead = {...this.body[0]};
         this.collisionDetection(this.body[0], this.snakePreviousPosition);
-
+        
         if(!this.isCrushed){
             if(this.direction === "UP"){
-                this.savePreviousPosition();    
+                this.savePreviousPosition();
                 bodyPart.style.top = `${snakeHead.y -= this.step}px`;
                 this.body[0] = snakeHead;
                 this.updatePosition();

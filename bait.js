@@ -17,7 +17,7 @@ export default class Bait{
         this.setPosition("Y");
     }
 
-    restart = () => {
+    restart() {
         this.snakeBody = [
             {x: 0, y: (this.gameHeight - (this.step * 5))},
             {x: 0, y: (this.gameHeight - (this.step * 4))},
@@ -29,14 +29,14 @@ export default class Bait{
         this.drew();
     }
 
-    remove = () => {
+    remove() {
        
         let area = document.querySelector("#area");
         let bait = document.querySelector("#bait");
         area.removeChild(bait);
     }
 
-    checkCollision = () => {
+    checkCollision() {
 
         let y = this.Y_points[Math.floor(Math.random() * this.Y_points.length)];
         let x = this.X_points[Math.floor(Math.random() * this.X_points.length)];
@@ -54,7 +54,7 @@ export default class Bait{
         return {x, y};
     }
 
-    drew = () => {
+    drew() {
 
         let area = document.querySelector("#area");
         let position = this.checkCollision();
@@ -68,7 +68,7 @@ export default class Bait{
         area.appendChild(div);
     }
 
-    setPosition = (position) => {
+    setPosition(position) {
         if(position === "X") {
             for(let idx = 20; idx < this.gameWidth; idx += 20){
                 this.X_points.push(idx);
