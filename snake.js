@@ -33,9 +33,30 @@ export default class Snake{
         ];
     }
 
+    restart = () => {
+
+        this.body = [
+            {x: 0, y: (this.gameHeight - (this.step * 5))},
+            {x: 0, y: (this.gameHeight - (this.step * 4))},
+            {x: 0, y: (this.gameHeight - (this.step * 3))},
+            {x: 0, y: (this.gameHeight - (this.step * 2))},
+            {x: 0, y: (this.gameHeight - this.step)}
+        ];
+        
+        this.direction = "";
+        this.snakePreviousPosition = [];
+        this.isCrushed = false;
+        this.remove();
+        this.drew();
+    }
+
     remove = () => {
-        let area = document.querySelector("#area");                
-        area.innerHTML = "";
+        let area = document.querySelector("#area");
+        let body = document.querySelectorAll(".body");
+
+        for (let idx = 0; idx < body.length; idx++) {
+            area.removeChild(body[idx]);
+        }
     }
 
     addBodyPart = () => {

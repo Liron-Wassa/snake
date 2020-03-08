@@ -6,24 +6,38 @@ import Bait from './bait.js';
 const gameHeight = document.querySelector("#area").clientHeight;
 const gameWidth = document.querySelector("#area").clientWidth;
 let points = document.querySelector("#points");
+let bestScore = document.querySelector("#best");
 let gameOver = document.querySelector("#gameOver");
 let created = document.querySelector("#created");
 let btnContainer = document.querySelector("#btnContainer");
 let resetBtn = document.querySelector("#resetBtn");
+let best = localStorage.getItem("score") || 0;
 let score = 0;
 
 let game = new Game();
 let snake = new Snake(gameHeight, gameWidth, game);
-let bait = new Bait(gameHeight, gameWidth, snake.body);
-new Input(snake);
+let bait = new Bait(gameHeight, gameWidth, snake);
+new Input(snake, restart);
 
+function restart() {
+    score = 0;
+    points.textContent = score;
+    game.state = game.running;
+    snake.restart();
+    bait.restart();
+    gameLoop();
+}
+
+snake.drew();
+bait.drew();
 
 const gameLoop = () => {
 
     console.log("game running");
-    
-    snake.drew();
-    bait.drew();
+    gameOver.style.display = "none";
+    created.style.display = "none";
+    btnContainer.style.display = "none";
+    resetBtn.style.display = "none";
     
     let gameId = setInterval(() => {
                 
@@ -33,8 +47,9 @@ const gameLoop = () => {
 
             if(bait.x === snake.body[0].x && bait.y === snake.body[0].y){
 
-                score += 10;        
+                score += 10;
                 points.textContent = score;
+                score > best ? localStorage.setItem("score", score) : null;
                 bait.remove();
                 snake.addBodyPart();
                 bait.drew();
@@ -42,6 +57,9 @@ const gameLoop = () => {
             
         }
         else if(game.state === game.over){
+           
+            best = localStorage.getItem("score") || 0;
+            bestScore.textContent = best;
             gameOver.style.display = "block";
             created.style.display = "block";
             btnContainer.style.display = "flex";

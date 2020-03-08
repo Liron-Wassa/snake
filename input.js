@@ -1,6 +1,6 @@
 export default class Input{
 
-    constructor(snake){
+    constructor(snake, restart){
 
         document.body.addEventListener("keydown", function(e){
 
@@ -16,6 +16,11 @@ export default class Input{
             else if(e.keyCode === 40 && snake.direction !== "UP"){
                 snake.direction = "DOWN";
             }
+        });
+
+        resetBtn.addEventListener("click", function(){
+            restart();
+            console.log("clciked");
         });
     }
 }

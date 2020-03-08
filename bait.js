@@ -1,6 +1,6 @@
 export default class Bait{
 
-    constructor(gameHeight, gameWidth, snakeBody){
+    constructor(gameHeight, gameWidth, snake){
 
         this.baitWidth = 20;
         this.baitHieght = 20;
@@ -8,7 +8,8 @@ export default class Bait{
         this.Y_points = [];
         this.gameHeight = gameHeight;
         this.gameWidth = gameWidth;
-        this.snakeBody = snakeBody;
+        this.snakeBody = snake.body;
+        this.step = snake.step;
         this.y = 0;
         this.x = 0;        
         
@@ -16,7 +17,20 @@ export default class Bait{
         this.setPosition("Y");
     }
 
+    restart = () => {
+        this.snakeBody = [
+            {x: 0, y: (this.gameHeight - (this.step * 5))},
+            {x: 0, y: (this.gameHeight - (this.step * 4))},
+            {x: 0, y: (this.gameHeight - (this.step * 3))},
+            {x: 0, y: (this.gameHeight - (this.step * 2))},
+            {x: 0, y: (this.gameHeight - this.step)}
+        ];
+        this.remove();
+        this.drew();
+    }
+
     remove = () => {
+       
         let area = document.querySelector("#area");
         let bait = document.querySelector("#bait");
         area.removeChild(bait);
