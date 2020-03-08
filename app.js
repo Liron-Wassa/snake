@@ -9,7 +9,7 @@ let points = document.querySelector("#points");
 let bestScore = document.querySelector("#best");
 let gameOver = document.querySelector("#gameOver");
 let created = document.querySelector("#created");
-let btnContainer = document.querySelector("#btnContainer");
+let resetBtnContainer = document.querySelector("#resetBtnContainer");
 let resetBtn = document.querySelector("#resetBtn");
 let best = localStorage.getItem("score") || 0;
 let score = 0;
@@ -36,7 +36,7 @@ const gameLoop = () => {
     console.log("game running");
     gameOver.style.display = "none";
     created.style.display = "none";
-    btnContainer.style.display = "none";
+    resetBtnContainer.style.display = "none";
     resetBtn.style.display = "none";
     
     let gameId = setInterval(() => {
@@ -62,7 +62,7 @@ const gameLoop = () => {
             bestScore.textContent = best;
             gameOver.style.display = "block";
             created.style.display = "block";
-            btnContainer.style.display = "flex";
+            resetBtnContainer.style.display = "flex";
             resetBtn.style.display = "block";
             clearInterval(gameId);
         }

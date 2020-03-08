@@ -73,7 +73,7 @@ body{
     z-index: 3;
 }
 
-#btnContainer{
+#resetBtnContainer{
     display: none;
     justify-content: center;
 }
@@ -92,4 +92,36 @@ body{
     font-weight: bold;
     font-size: 1em;
     z-index: 3;
+}
+
+#btnsContainer{
+    height: 140px;
+    max-width: 400px;
+    margin: 10px auto;
+    margin-bottom: 0px;
+    position: relative;
+}
+
+.btns{
+    width: 35%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 1.8em;
+    background-color: yellow;
+    border: none;
+}
+
+#up_container{
+    display: flex;
+    justify-content: center;
+}
+
+#right_left_container{
+    display: flex;
+    justify-content: space-between;
+}
+
+#down_container{
+    display: flex;
+    justify-content: center;
 }
