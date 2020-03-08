@@ -2,10 +2,7 @@ export default class Input{
 
     constructor(snake, restart, gameLoop){
 
-        let upBtn = document.querySelector("#up");
-        let leftBtn = document.querySelector("#left");
-        let downBtn = document.querySelector("#down");
-        let rightBtn = document.querySelector("#right");
+        let buttons = document.querySelectorAll(".btns");
         let startBtn = document.querySelector("#startBtn");
 
         document.body.addEventListener("keydown", function(e){
@@ -44,28 +41,29 @@ export default class Input{
             restart();
         });
 
-        if(snake.snakePreviousPosition[0]){
-            upBtn.addEventListener("click", function(){
-                if(snake.snakePreviousPosition[0].y === snake.body[0].y){
-                    snake.direction = "UP";
-                }
-            });
-
-            leftBtn.addEventListener("click", function(){
-                if(snake.snakePreviousPosition[0].x === snake.body[0].x){
-                    snake.direction = "LEFT";
-                }
-            });
-
-            downBtn.addEventListener("click", function(){
-                if(snake.snakePreviousPosition[0].y === snake.body[0].y){
-                    snake.direction = "DOWN";
-                }
-            });
-
-            rightBtn.addEventListener("click", function(){
-                if(snake.snakePreviousPosition[0].x === snake.body[0].x){
-                    snake.direction = "RIGHT";
+        for (let idx = 0; idx < buttons.length; idx++) {
+            buttons[idx].addEventListener("click", function(e){
+                if(snake.snakePreviousPosition[0]){
+                    if(e.target.id === "up" && snake.direction !== "DOWN"){
+                        if(snake.snakePreviousPosition[0].y === snake.body[0].y){
+                            snake.direction = "UP";
+                        }
+                    }
+                    else if(e.target.id === "right" && snake.direction !== "LEFT"){
+                        if(snake.snakePreviousPosition[0].x === snake.body[0].x){
+                            snake.direction = "RIGHT";
+                        }
+                    }
+                    else if(e.target.id === "down" && snake.direction !== "UP"){
+                        if(snake.snakePreviousPosition[0].y === snake.body[0].y){
+                            snake.direction = "DOWN";
+                        }
+                    }
+                    else if(e.target.id === "left" && snake.direction !== "RIGHT"){
+                        if(snake.snakePreviousPosition[0].x === snake.body[0].x){
+                            snake.direction = "LEFT";
+                        }
+                    }
                 }
             });
         }

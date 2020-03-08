@@ -10,21 +10,6 @@ export default class Snake{
         this.direction = "UP";
         this.step = 20;
         this.body = [
-            // {x: 0, y: (this.gameHeight - (this.step * 20))},
-            // {x: 0, y: (this.gameHeight - (this.step * 19))},
-            // {x: 0, y: (this.gameHeight - (this.step * 18))},
-            // {x: 0, y: (this.gameHeight - (this.step * 17))},
-            // {x: 0, y: (this.gameHeight - (this.step * 16))},
-            // {x: 0, y: (this.gameHeight - (this.step * 15))},
-            // {x: 0, y: (this.gameHeight - (this.step * 14))},
-            // {x: 0, y: (this.gameHeight - (this.step * 13))},
-            // {x: 0, y: (this.gameHeight - (this.step * 12))},
-            // {x: 0, y: (this.gameHeight - (this.step * 11))},
-            // {x: 0, y: (this.gameHeight - (this.step * 10))},
-            // {x: 0, y: (this.gameHeight - (this.step * 9))},
-            // {x: 0, y: (this.gameHeight - (this.step * 8))},
-            // {x: 0, y: (this.gameHeight - (this.step * 7))},
-            // {x: 0, y: (this.gameHeight - (this.step * 6))},
             {x: 0, y: (this.gameHeight - (this.step * 5))},
             {x: 0, y: (this.gameHeight - (this.step * 4))},
             {x: 0, y: (this.gameHeight - (this.step * 3))},

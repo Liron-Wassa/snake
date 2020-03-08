@@ -34,6 +34,7 @@ bait.drew();
 function gameLoop() {
 
     console.log("game running");
+    
     gameOver.style.display = "none";
     created.style.display = "none";
     resetBtnContainer.style.display = "none";
@@ -50,8 +51,8 @@ function gameLoop() {
                 score += 10;
                 points.textContent = score;
                 score > best ? localStorage.setItem("score", score) : null;
-                bait.remove();
                 snake.addBodyPart();
+                bait.remove();
                 bait.drew();
             }
             
