@@ -4,9 +4,11 @@ body{
 }
 
 #area{
-    -webkit-touch-callout: none;
     /* touch-action: none; */
     user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     display: flex;
     justify-content: center;
     width: 400px;
@@ -50,9 +52,11 @@ body{
 }
 
 #score{
-    -webkit-touch-callout: none;
     /* touch-action: none; */
     user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     text-align: center;
     font-size: 25px;
     color: white;
@@ -118,9 +122,11 @@ body{
 }
 
 #btnsContainer{
-    -webkit-touch-callout: none;
     /* touch-action: none; */
     user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     height: 140px;
     max-width: 400px;
     margin: 10px auto;
