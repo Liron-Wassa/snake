@@ -4,7 +4,8 @@ body{
 }
 
 #area{
-    touch-action: none;
+    -webkit-touch-callout: none;
+    /* touch-action: none; */
     user-select: none;
     display: flex;
     justify-content: center;
@@ -49,7 +50,8 @@ body{
 }
 
 #score{
-    touch-action: none;
+    -webkit-touch-callout: none;
+    /* touch-action: none; */
     user-select: none;
     text-align: center;
     font-size: 25px;
@@ -116,7 +118,8 @@ body{
 }
 
 #btnsContainer{
-    touch-action: none;
+    -webkit-touch-callout: none;
+    /* touch-action: none; */
     user-select: none;
     height: 140px;
     max-width: 400px;
