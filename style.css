@@ -1,11 +1,10 @@
-body{
+html, body{
+    -webkit-user-select: none;
     font-family: Arial, Helvetica, sans-serif;
     background-color: black;
 }
 
 #area{
-    -webkit-user-select: none;
-    /* user-select: none; */
     display: flex;
     justify-content: center;
     width: 400px;
@@ -49,8 +48,6 @@ body{
 }
 
 #score{
-    -webkit-user-select: none;
-    /* user-select: none; */
     text-align: center;
     font-size: 25px;
     color: white;
@@ -116,8 +113,6 @@ body{
 }
 
 #btnsContainer{
-    -webkit-user-select: none;
-    /* user-select: none; */
     height: 140px;
     max-width: 400px;
     margin: 10px auto;
