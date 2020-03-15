@@ -1,5 +1,5 @@
 html, body{
-    user-zoom: none;
+    user-zoom: fixed;
     -webkit-user-select: none;
     font-family: Arial, Helvetica, sans-serif;
     background-color: black;
